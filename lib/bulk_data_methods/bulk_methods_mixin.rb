@@ -224,7 +224,7 @@ module BulkMethodsMixin
             end
           end.join(',')
         end
-        datatable = datatable_rows.join(' union select ')
+        datatable = datatable_rows.join(options[:union_all] ? ' union all select ' : ' union select ')
 
         sql_update_string = <<-SQL
           update #{table_name} set
